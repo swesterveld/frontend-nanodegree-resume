@@ -21,3 +21,8 @@ constructed as an SVG, by making use of the D3.js library.
   (and mark as such) in the 'Work Experience' section.
 * Certifications in a separate array of the education-object, to show in the
   section about education.
+
+## GitHub Pages
+The resume is hosted on GitHub Pages. If you're interested in the
+resume, you might check the result at: http://swesterveld.github.io/frontend-nanodegree-resume/.
+
