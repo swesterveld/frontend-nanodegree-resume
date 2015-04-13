@@ -210,32 +210,31 @@ var projects = {
             "title": "Movie Trailer Website",
             "dates": "2015",
             "description": "This project is part of the Nanodegree Full Stack Web Developer at Udacity.",
-            "images": ["images/logo_udacity.png"] // https://lh4.ggpht.com/dR8q0uh3GoH-kU00KnQ1elSkqBeWi-ZOQ1_14uDxWRACmhrIDQFOfItKdAf7hngoResshnbb9hmVpPuwkjI=s0#w=152&h=152
+            "images": ["images/projects/nd004p1_1_thumb.png", "images/projects/nd004p1_2_thumb.png"]
         },
         {
             "title": "Mockup to Website",
             "dates": "2015",
             "description": "This project is part of the Nanodegree Front-End Web Developer at Udacity. Based on a mockup given by Udacity, I've made a website that's a pixel-perfect matchup. To achieve this, I've used HTML, CSS and Bootstrap 2.",
-            "images": ["images/logo_udacity.png"] // https://lh4.ggpht.com/dR8q0uh3GoH-kU00KnQ1elSkqBeWi-ZOQ1_14uDxWRACmhrIDQFOfItKdAf7hngoResshnbb9hmVpPuwkjI=s0#w=152&h=152
+            "images": ["images/projects/nd001p1_1_thumb.png", "images/projects/nd001p1_2_thumb.png", "images/projects/nd001p1_3_thumb.png"]
         },
         {
             "title": "Heuristics (University of Amsterdam)",
             "dates": "2013 - present",
             "description": "Grading student submissions for the course Heuristieken (Heuristics)",
-            "images": ["images/logo_uva.jpg"] // http://static.uva.nl/binaries/content/gallery/logos/p-z/uva-logo_en.jpg
+            "images": ["images/projects/heuristics_1_thumb.png", "images/projects/heuristics_2_thumb.png"]
         },
         {
             "title": "External Expert for Graduation Sessions @ HvA Amsterdam)",
             "dates": "2009 - present",
             "description": "Grading student thesis for their final internship",
             "images": []
-            //"images": ["images/logo_uva.jpg"] // http://static.uva.nl/binaries/content/gallery/logos/p-z/uva-logo_en.jpg
         },
         {
             "title": "Cluster Management Tool (SURFsara)",
             "dates": "2012 - 2014",
             "description": "Built a Django/Python based tool for administration and management of large distributed systems. It's used to store generic information and generate specific configuration files.",
-            "images": ["images/logo_surfsara.png"] // https://surfsara.nl/sites/all/themes/st_sara/logo.png
+            "images": ["images/projects/cmt_1_thumb.png"]
         }
     ]
 };
@@ -256,9 +255,9 @@ projects.display = function() {
         $(".project-entry:last").append(formattedDescription);
 
         if (current_project.images.length > 0) {
-            for (img in current_project.images) {
+            for (i in current_project.images) {
                 var formattedImages =
-                    HTMLprojectImage.replace("%data%", current_project.images[0]);
+                    HTMLprojectImage.replace("%data%", current_project.images[i]);
                 $(".project-entry:last").append(formattedImages);
             }
         }
