@@ -252,9 +252,9 @@ var projects = {
 
 // Add a function to the projects-object to display its data
 projects.display = function() {
-    for (p in projects.projects) {
+    for (var project=0; project<projects.projects.length; project++) {
         // Format the project-data
-        var current_project = projects.projects[p];
+        var current_project = projects.projects[project];
 
         var formattedTitle = HTMLprojectTitle.replace("%data%",
                 current_project.title);
