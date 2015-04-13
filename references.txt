@@ -1,0 +1,13 @@
+These are the references I've used for the project.
+
+To try/experiment with JavaScript, I've used JSFiddle: http://jsfiddle.net
+
+For the word-cloud:
+* Implemented with https://github.com/jasondavies/d3-cloud
+* Code based on the example on Jason Davies' GitHub repository d3-cloud:
+    https://github.com/jasondavies/d3-cloud/blob/master/examples/simple.html
+* Got a better understanding of the D3-cloud with:
+    http://www.pubnub.com/blog/quick-word-cloud-from-a-chatroom-with-d3js/
+* To get a grip on the SVG group-element I've used:
+    http://www.w3.org/TR/SVG/coords.html (from the SVG standard)
+    https://www.dashingd3js.com/svg-group-element-and-d3js

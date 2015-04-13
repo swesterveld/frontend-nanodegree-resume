@@ -32,19 +32,24 @@ bio.show_skills = function() {
     var width = document.getElementById("header").offsetWidth-96;
     var height =
         window.innerHeight - document.getElementById("header").offsetHeight;
-    d3.layout.cloud()
-        .size([width, height])
-        .words(this.skills.map(function(d) {
-            return {text: d, size: 10 + Math.random() * 90};
-        }))
-        .padding(1)
-        // ~~ is a bitwise Math.floor for values > 0, but quicker.
-        // rotate either 0 or 90 degrees
-        .rotate(function() { return ~~(Math.random() * 2) * 90; })
-        .font("Gorditas")
-        .fontSize(function(d) { return d.size; })
-        .on("end", drawCloud)
-        .start();
+
+    // initialize (calculate) the cloud and draw it
+    function calculateCloud(words) {
+        d3.layout.cloud()
+            .size([width, height])
+            .words(words.map(function(d) {
+                return {text: d, size: 10 + Math.random() * 90};
+            }))
+            .padding(1)
+            // ~~ is a bitwise Math.floor for values > 0, but quicker.
+            // rotate either 0 or 90 degrees
+            .rotate(function() { return ~~(Math.random() * 2) * 90; })
+            .font("Gorditas")
+            .fontSize(function(d) { return d.size; })
+            .on("end", drawCloud)
+            .start();
+    }
+
     function drawCloud(words) {
         d3.select("#cloud").append("svg")
             .attr("width", width)
@@ -64,6 +69,8 @@ bio.show_skills = function() {
             })
             .text(function(d) { return d.text; });
     }
+
+    calculateCloud(this.skills);
 };
 
 // Add a function to the bio-object to display its contents
@@ -263,6 +270,8 @@ projects.display = function() {
         $(".project-entry:last").append(formattedDescription);
 
         // Check for images, and add if exists
+        // TODO: show bigger version in overlay, after click on
+        // thumbnail
         if (current_project.images.length > 0) {
             for (i in current_project.images) {
                 var formattedImages = HTMLprojectImage.replace("%data%",
@@ -289,14 +298,14 @@ var education = {
         {
             "title": "Japanese Language Proficiency Test N5",
             "location": "London, UK",
-            "organization": "University of London, jointly administered by Japan Foundation and JEES",
+            "organization": "University of London (jointly administered by Japan Foundation and JEES)",
             "dates": "2012",
             "url": "http://jlpt.jp/"
         },
         {
             "title": "Certified Kanban Foundation Training",
             "location": "Baarn, NL",
-            "organization": "VX Company, accredited by LeanKanban University",
+            "organization": "VX Company (accredited by LeanKanban University)",
             "dates": "2013",
             "url": "http://vxcompany.com/vxacademy/training/training-kanban/"
         },
@@ -391,13 +400,14 @@ education.display = function() {
         for (i in education.certifications) {
             var cert = this.certifications[i];
 
-            var fmtCertTitle = HTMLonlineTitle.replace("%data%", cert.title);
-            var fmtCertOrganization = HTMLonlineSchool.replace("%data%",
-                    cert.organization);
-            var fmtCertLocation = HTMLschoolLocation.replace("%data%",
+            var fmtCertTitle = HTMLcertificationTitle.replace("%data%", cert.title);
+            var fmtCertOrganization = HTMLcertificationOrganization.replace(
+                    "%data%", cert.organization);
+            var fmtCertLocation = HTMLcertificationLocation.replace("%data%",
                     cert.location);
-            var fmtCertDates = HTMLonlineDates.replace("%data%", cert.dates);
-            var fmtCertURL = HTMLonlineURL.replace("%data%", cert.url);
+            var fmtCertDates = HTMLcertificationDates.replace("%data%",
+                    cert.dates);
+            var fmtCertURL = HTMLcertificationURL.replace("%data%", cert.url);
 
             $(".education-entry:last").append(fmtCertTitle +
                     fmtCertOrganization);
