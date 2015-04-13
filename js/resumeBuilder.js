@@ -43,7 +43,7 @@ bio.show_skills = function() {
             .padding(1)
             // ~~ is a bitwise Math.floor for values > 0, but quicker.
             // rotate either 0 or 90 degrees
-            .rotate(function() { return ~~(Math.random() * 2) * 90; })
+            .rotate(function() { return ~~(Math.random() * 2) * 90 - 10; })
             .font("Gorditas")
             .fontSize(function(d) { return d.size; })
             .on("end", drawCloud)
