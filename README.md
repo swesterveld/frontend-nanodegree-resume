@@ -15,7 +15,9 @@ file.
 This code is a fork of the [frontend-nanodegree-resume](https://github.com/udacity/frontend-nanodegree-resume)
 repository provided by Udacity. Some additional things I've implemented in this
 project are:
-* A visualization of my skills, in a word-cloud.
+* A visualization of my skills in a word-cloud ([d3-cloud](https://github.com/jasondavies/d3-cloud))
+constructed as an SVG, by making use of the D3.js library.
 * Internship-objects in a separate attribute of the work-object, to show
   (and mark as such) in the 'Work Experience' section.
-* Certifications as part of the education-object.
+* Certifications in a separate array of the education-object, to show in the
+  section about education.
