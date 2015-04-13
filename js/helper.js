@@ -54,6 +54,13 @@ var HTMLschoolDates = '<div class="date-text">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
+var HTMLcertifications = '<h3>Certifications</h3>';
+var HTMLcertificationTitle = '<a href="#">%data%';
+var HTMLcertificationLocation = '<div class="location-text">%data%</div>';
+var HTMLcertificationOrganization = ' - %data%</a>';
+var HTMLcertificationDates = '<div class="date-text">%data%</div>';
+var HTMLcertificationURL = '<br><a href="#">%data%</a>';
+
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
 var HTMLonlineTitle = '<a href="#">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
@@ -137,6 +144,9 @@ function initializeMap() {
     // the locations array
     for (var school in education.schools) {
       locations.push(education.schools[school].location);
+    }
+    for (var certification in education.certifications) {
+        locations.push(education.certifications[certification].location);
     }
 
     // iterates through work locations and appends each location to

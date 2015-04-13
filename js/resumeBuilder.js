@@ -22,7 +22,8 @@ var bio = {
         "Configuration Management", "HTML", "CSS", "Debian", "LaTeX", "CentOS",
         "Django", "Ruby", "Shell Scripting", "Algorithms", "Code Optimization",
         "GitHub", "C", "Java", "Ruby on Rails", "Cluster Computing", "Redmine",
-        "Nginx", "Amazon Web Services", "Japanese Language", "Vim", "Phonegap"
+        "Nginx", "Amazon Web Services", "Japanese Language", "Vim", "Phonegap",
+        "Autodidacticism", "D3.js"
     ],
     "biopic": "images/fry.jpg"
 };
@@ -126,7 +127,7 @@ var work = {
             "employer": "Nishino",
             "title": "Owner",
             "location": "Amsterdam, NL",
-            "dates": "2014 - 2015",
+            "dates": "2014 - present",
             "description": "Freelance consultant and engineer. I'm available for interesting projects. Please give me a shout if you need someone to help you out with your DevOps, for example."
         },
         {
@@ -140,7 +141,7 @@ var work = {
             "employer": "Gengo",
             "title": "Translator",
             "location": "Tokyo, JP",
-            "dates": "2011 - now",
+            "dates": "2011 - present",
             "description": "Translations from English/German to Dutch. Proofreading translations (from English to Dutch) conducted by other Gengo-translators. Worked on big projects for several well known S&P 500 and Fortune 500 listed companies, and have been selected as a preferred translator for some of those projects.",
         },
         {
@@ -176,9 +177,7 @@ work.display = function() {
 
         var worktype = ["jobs", "internships"];
         for (i in worktype) {
-            console.log("worktype:", i);
             for (j in this[worktype[i]]) {
-                console.log("job:", j);
                 var job = this[worktype[i]][j];
 
                 var formattedEmployer = HTMLworkEmployer.replace("%data%",
@@ -233,7 +232,7 @@ var projects = {
         {
             "title": "Cluster Management Tool (SURFsara)",
             "dates": "2012 - 2014",
-            "description": "Built a Django/Python based tool for administration and management of large distributed systems. It's used to store generic information and generate specific configuration files.",
+            "description": "Built a Django/Python based tool for administration and management of large distributed systems at SURFsara. It's used to store generic information and generate specific configuration files.",
             "images": ["images/projects/cmt_1_thumb.png"]
         }
     ]
@@ -274,16 +273,33 @@ var education = {
             "degree": "BA",
             "dates": "2003 - 2008",
             "majors": ["Applied Computer Science", "Game Technology"],
-            "url": "http://www.hva.nl/onderwijs/opleidingen/content/dmci/hbo-ict-technische-informatica/technische-informatica.html"
+            "url": "http://www.hva.nl/onderwijs/opleidingen/item/technische-informatica.html"
         }
     ],
-    "onlineCourses": [
+    "certifications": [
         {
             "title": "Japanese Language Proficiency Test N5",
-            "school": "University of London",
+            "location": "London, UK",
+            "organization": "University of London, jointly administered by Japan Foundation and JEES",
             "dates": "2012",
             "url": "http://jlpt.jp/"
         },
+        {
+            "title": "Certified Kanban Foundation Training",
+            "location": "Baarn, NL",
+            "organization": "VX Company, accredited by LeanKanban University",
+            "dates": "2013",
+            "url": "http://vxcompany.com/vxacademy/training/training-kanban/"
+        },
+        {
+            "title": "Summer Course Mathematics",
+            "location": "Amsterdam, NL",
+            "organization": "Hogeschool van Amsterdam",
+            "dates": "2003",
+            "url": ""
+        }
+    ],
+    "onlineCourses": [
         {
             "title": "Intro to HTML and CSS",
             "school": "Udacity",
@@ -353,9 +369,27 @@ education.display = function() {
         }
     }
 
-    $('.education-entry').append(HTMLonlineClasses);
+    //
+    if (education.certifications.length > 0) {
+        $('.education-entry').append(HTMLcertifications);
+        for (i in education.certifications) {
+            var cert = this.certifications[i];
+
+            var fmtCertTitle = HTMLonlineTitle.replace('%data%', cert.title);
+            var fmtCertOrganization = HTMLonlineSchool.replace('%data%', cert.organization);
+            var fmtCertLocation = HTMLschoolLocation.replace('%data%', cert.location);
+            var fmtCertDates = HTMLonlineDates.replace('%data%', cert.dates);
+            var fmtCertURL = HTMLonlineURL.replace('%data%', cert.url);
+
+            $('.education-entry').append(fmtCertTitle + fmtCertOrganization);
+            $('.education-entry').append(fmtCertLocation);
+            $('.education-entry').append(fmtCertDates);
+            $('.education-entry').append(fmtCertURL);
+        }
+    }//
 
     if (education.onlineCourses.length > 0) {
+        $('.education-entry').append(HTMLonlineClasses);
         for (i in education.onlineCourses) {
             var course = this.onlineCourses[i];
 
