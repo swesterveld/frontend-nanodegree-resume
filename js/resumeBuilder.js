@@ -21,7 +21,7 @@ var bio = {
         "Nginx", "Amazon Web Services", "Japanese Language", "Vim", "Phonegap",
         "Autodidacticism", "D3.js"
     ],
-    "biopic": "images/fry.jpg"
+    "biopic": "images/me.jpg"
 };
 
 // Add a function to make a word-cloud of the skills defined in the
