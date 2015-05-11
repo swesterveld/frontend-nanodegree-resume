@@ -24,5 +24,5 @@ constructed as an SVG, by making use of the D3.js library.
 
 ## GitHub Pages
 The resume is hosted on GitHub Pages. If you're interested in the
-resume, you might check the result at: http://swesterveld.github.io/frontend-nanodegree-resume/.
+resume, you might check the result at: http://swesterveld.github.io/udacity-nd001-p2-interactive-resume/.
 
